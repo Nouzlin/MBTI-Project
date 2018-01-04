@@ -18,12 +18,13 @@ from bs4 import BeautifulSoup
 from sklearn.model_selection import cross_validate
 from sklearn.model_selection import StratifiedKFold
 from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
 from sklearn.model_selection import learning_curve, GridSearchCV
-from sklearn.ensemble import ExtraTreesClassifier
 from sklearn.decomposition import TruncatedSVD
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
-from sklearn.pipeline import Pipeline
 from sklearn.naive_bayes import MultinomialNB
+from sklearn.pipeline import Pipeline
+from sklearn.ensemble import ExtraTreesClassifier
 
 def setup_logging():
     """
@@ -63,7 +64,7 @@ def load_csv(file_name):
     Each element in the list contains one row from the .csv file.
     """
     logging.info('Loading csv file: %s', file_name)
-    data_frame = pd.read_csv(file_name)
+    data_frame = pd.read_csv(file_name, dtype={'type': np.dtype(str), 'posts': np.dtype(str)})
 
     logging.info('Loading complete')
     return data_frame
@@ -75,8 +76,8 @@ def handle_delimiter(text):
     It replaces the delimiter with a space.
     """
     # TODO: Maybe we should actually split here, in the case of sentiment analysis of sentences?
-    text = re.sub(r'\|\|\|', r' ', text) # Replace ||| with spaces
-    return text
+    text = re.sub(r'\|\|\|', " ", str(text)) # Replace ||| with spaces
+    return str(text)
 
 
 def clean_posts(text):
@@ -85,10 +86,10 @@ def clean_posts(text):
     Also removes any URL found and replaces it with <URL> tag.
     """
     text = BeautifulSoup(text, "lxml").text
-    text = re.sub(r'http\S+', r'<URL>', text) # Replace URLs with URL tag.
+    text = re.sub(r'http\S+', r'<URL>', str(text)) # Replace URLs with URL tag.
     # Optional: Remove @ and replace with some tag?
     # Optional: Instead of replacing URL with URL tag, do URL analysis and turn it into keywords?
-    return text
+    return str(text)
 
 def preprocess_posts(posts):
     """
@@ -111,7 +112,7 @@ def preprocess_posts(posts):
         start = 1 if string[0] == "'" else 0
         end = -1 if string[-1] == "'" else None
         trimmed = str(string[start:end])
-        cleaned = clean_posts(trimmed)
+        cleaned = str(clean_posts(trimmed))
         processed_posts.append(cleaned)
     logging.info("Preprocessing data completed.")
     return processed_posts
@@ -258,8 +259,10 @@ def get_data(argv):
     train = load_csv(DATA_FILE)
 
     if "--no-preprocess" in argv:
+        logging.info("Using raw data without preprocessing.")
         return train
 
+    logging.info("Using loaded, preprocessed data.")
     train["posts"] = preprocess_posts(train["posts"])
 
     if "--save" in argv or "-s" in argv: # Save data to file
@@ -294,47 +297,53 @@ def main(argv):
 
     train["posts"].apply(handle_delimiter)
 
-    N_ESTIMATORS_ETC = 20
-    MAX_DEPTH_ETC = 4
-    etc = ExtraTreesClassifier(n_estimators=N_ESTIMATORS_ETC, max_depth=MAX_DEPTH_ETC)
-    logging.info("Using Extra Trees Classifier with parameters: n_estimators=%s, max_depth=%s",
-                N_ESTIMATORS_ETC, MAX_DEPTH_ETC)
+    X_train, X_test, y_train, y_test = train_test_split(
+        train["posts"], train["type"], test_size=0.33, random_state=1)
 
-    NGRAM_RANGE_TFIDF = (1, 1)
-    tfidf = TfidfVectorizer(ngram_range=NGRAM_RANGE_TFIDF, stop_words='english')
-    logging.info("Using TF-IDF Vectoriser with parameters: ngram_range=%s", NGRAM_RANGE_TFIDF)
+    steps = [
+        ('tfidf', TfidfVectorizer(stop_words='english')),
+        ('tsvd', TruncatedSVD()),
+        ('extra_trees', ExtraTreesClassifier())]
+    
+    pipeline = Pipeline(steps)
+    logging.info("Pipeline set up: %s", pipeline)
 
-    N_COMPONENTS_SVD = 10
-    tsvd = TruncatedSVD(n_components=N_COMPONENTS_SVD)
-    logging.info("Using Truncated SVD with parameters: n_components=%s", N_COMPONENTS_SVD)
+    kfolds = StratifiedKFold(n_splits=5, shuffle=True, random_state=1)
+    logging.info("Using kfolds: %s", kfolds)
 
-    model = Pipeline([('tfidf1', tfidf), ('tsvd1', tsvd), ('etc', etc)])
-
-    N_SPLITS_KFOLDS = 5
-    kfolds = StratifiedKFold(n_splits=N_SPLITS_KFOLDS, shuffle=True, random_state=1)
-    logging.info("Using kfolds with %s folds", N_SPLITS_KFOLDS)
-
-    logging.info("Pipeline set up, CV initialised")
-
-    scoring = {'acc': 'accuracy',
+    scoring = {'AUC': 'roc_auc',
+               'acc': 'accuracy',
                'neg_log_loss': 'neg_log_loss',
                'f1_micro': 'f1_micro'}
 
-    results = cross_validate(model, train['posts'], train['type'], cv=kfolds, 
-                          scoring=scoring)
+    parameters = {
+        'tfidf__ngram_range': [(1, 1), (1, 2)],
+        'tsvd__n_components': [10, 15, 20],
+        'extra_trees__n_estimators': [10, 20, 30],
+        'extra_trees__max_depth': [None, 3, 4, 5]
+    }
 
-    logging.info("CV Accuracy: {:0.4f} (+/- {:0.4f})".format(
-        np.mean(results['test_acc']),
-        np.std(results['test_acc'])))
+    cv = GridSearchCV(pipeline, parameters, cv=kfolds, n_jobs=-1)
+    cv.fit(X_train, y_train)
+    y_predictions = cv.predict(X_test)
+    report = sklearn.metrics.classification_report(y_test, y_predictions)
+    print(report)
+    #results = clf.cv_results_
+    #print(results)
 
-    logging.info("CV F1: {:0.4f} (+/- {:0.4f})".format(
-        np.mean(results['test_f1_micro']),
-        np.std(results['test_f1_micro'])))
+    #logging.info("CV Accuracy: {:0.4f} (+/- {:0.4f})".format(
+    #    np.mean(results['test_acc']),
+    #    np.std(results['test_acc']) * 2))
 
-    logging.info("CV Logloss: {:0.4f} (+/- {:0.4f})".format(
-        np.mean(-1*results['test_neg_log_loss']),
-        np.std(-1*results['test_neg_log_loss'])))
+    #logging.info("CV F1: {:0.4f} (+/- {:0.4f})".format(
+    #    np.mean(results['test_f1_micro']),
+    #    np.std(results['test_f1_micro']) * 2))
 
+    #logging.info("CV Logloss: {:0.4f} (+/- {:0.4f})".format(
+    #    np.mean(-1*results['test_neg_log_loss']),
+    #    np.std(-1*results['test_neg_log_loss']) * 2))
+
+    return 0
     tfidf2 = CountVectorizer(ngram_range=(1, 1), 
                          stop_words='english',
                          lowercase = True, 
