@@ -1,0 +1,96 @@
+\section{Method}
+
+This section covers the data set used in this work and the preprocessing and feature extraction used.
+The implementations of the classification models used are briefly mentioned.
+The work was implemented using Python\footnote{https://www.python.org/} version 3.6.2.
+\subsection{Data Set}
+The data set used in this work was downloaded from Kaggle\footnote{https://www.kaggle.com/}.
+It contains data from 8675 Personality Cafe \footnote{http://personalitycafe.com/forum/} forum users.
+Each data entry contains the 50 latest posts from a user, together with the MBTI of the user.
+30\% of the data was used as a test set and the training set consisted of the remaining 70\%.
+\subsection{Exploratory Data Analysis}
+A simple EDA was performed to better understand the data.
+This work mainly used word clouds, bar plots and document content analysis.
+
+\subsubsection{Word clouds}
+The Python library \texttt{word\_cloud}\footnote{https://github.com/amueller/word\_cloud} was used to generate word clouds.
+First a word cloud was generated from all the documents in the data set.
+The idea behind this general word cloud was to see if there were any terms or topics that needed further investigation.
+After the general word cloud was generated the documents were partitioned on their respective MBTI labels.
+A word cloud was then generated for each MBTI label.
+Appendix \ref{sec:wordclouds} contains all the word clouds generated.
+
+\subsection{Preprocessing} \label{sec:method-preprocessing} 
+The data set was preprocessed according to the following steps:
+
+\subsubsection{Standardising}
+The data set was standardised so that any leading or trailing "\texttt{'}" characters were removed.
+
+\subsubsection{Tagging}
+All URLs in the data set were replaced with a \texttt{<URL>} tag.
+Only URLs were replaced with a tag in this work.
+
+\subsubsection{Tokenising}
+The data was tokenised using the tokeniser from the \texttt{NLTK}\footnote{http://www.nltk.org/} package.
+The \texttt{NLTK} package also contains an English stop word list that were used to remove stop words.
+
+\subsubsection{Stemming}
+The Snowball stemmer from the \texttt{NLTK} package was used to stem the tokens in the preprocessing step. 
+
+\subsection{Features}
+
+The features covered in Section \ref{sec:theory-features} were extracted and tested with the models in Section \ref{sec:theory-models}.
+This section covers the implementation-specific details for the feature extraction used in this work.
+
+\subsubsection{Filter Levels} \label{sec:method-filter-levels}
+Three \emph{filter levels} were introduced in order to try and improve the quality of the different feature models:
+
+\paragraph{Normal Filter} \label{sec:method-normal-filter}
+This filter level only applies the first two steps in the preprocessing mentioned in Section \ref{sec:method-preprocessing}.
+
+\paragraph{Type Filter} \label{sec:method-type-filter}
+This filter level applies the standard preprocessing, but it also removes any MBTIs found in the data set.
+The filtering is done by adding the MBTIs to the stop-word list.
+
+\paragraph{Extreme Filter} \label{sec:method-extreme-filter}
+This filter level applies both the standard preprocessing and the removal of MBTIs, as in the case of the Type Filter.
+It also removes any tokens that occur in less than five documents or in more than 50\% of the documents.
+
+\subsubsection{Latent Dirichlet Allocation}
+The library \texttt{gensim}\footnote{https://radimrehurek.com/gensim/} was used to implement the LDA model.
+Six LDA models with 10, 16, 25, 50, 75 and 100 topics were trained for each filter level.
+The LDA models were used to extract the topic terms and topic distribution feature vectors covered in Section \ref{sec:theory-features}.
+
+
+\subsubsection{Topic Terms Feature Vector}
+The topic term feature vector covered in Section \ref{sec:theory-topic-terms} was implemented using 10 topic terms.
+The feature vector was normalised for the LinSVC, GB and ET classifiers.
+
+
+\subsection{Model Implementation and Training}
+The models used the implementations in the \texttt{scikit-learn}\footnote{http://scikit-learn.org/stable/} package for Python.
+The main parameters for each model was tuned using the \texttt{GridSearchCV} class, which allows a grid of parameter values to be tested for each model using cross-validation. 
+The cross-validation used in this work was \texttt{StratifiedKFold} using five folds.
+The stratified $k$-folds tries to maintain the imbalance of the data set in the different folds. 
+The \texttt{F1\_micro} score was used to choose the best cross-validated model during the \texttt{GridSearchCV} parameter tuning.
+The micro score globally counts all TPs, TNs, FPs and FNs, which is more suitable if the data set is imbalanced. 
+
+\subsubsection{Initial Models} \label{sec:method-initial-models}
+The first part was to use only the standardised and tagged data set (see Section \ref{sec:method-normal-filter}) in a LR model.
+The classifier was tested using the bag-of-words model, the bigram model and the TF-IDF model.
+The best LR model obtained through the \texttt{GridSearchCV} process was then evaluated on the test set.
+
+The next step was to try the ET classifier on the standardised and tagged data set.
+The features were extracted by using TF-IDF with a unigram model, followed by truncated Singular Value Decomposition (SVD) to reduce the number of features.
+\texttt{GridSearchCV} was used to optimise the parameters for TF-IDF, truncated SVD and the ET classifier.
+
+\subsubsection{Type Filter Models} \label{sec:method-type-filter-models}
+The second part was to filter out the MBTIs from the data set, see Section \ref{sec:method-type-filter}.
+Instead of using the built-in tokenisation methods in \texttt{scikit-learn}, a custom corpus was built using the \texttt{NLTK} library.
+All the models briefly covered in Section \ref{sec:theory-models} were used on the type-filtered data set.
+The parameters for each model was individually optimised using \texttt{GridSearchCV}.
+
+\subsubsection{Extreme Filter Models}  \label{sec:method-extreme-filter-models}
+The final part was to also filter out extreme words from the data set, see Section \ref{sec:method-extreme-filter}.
+The same models are used as in Section \ref{sec:method-type-filter-models}.
+The parameters were again optimised using \texttt{GridSearchCV}.

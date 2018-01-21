@@ -1,0 +1,161 @@
+\section{Type Filter and Extreme Filter Results} \label{appendix:results}
+This appendix contains the results from using the implemented models on data with different filter levels (see Section \ref{sec:method-filter-levels}).
+Table \ref{tab:results-types} and Table \ref{tab:results-extremes} contain the results from using the Type Filter (Section \ref{sec:method-type-filter}) and the Extreme Filter (Section \ref{sec:method-extreme-filter}), respectively.
+\clearpage
+
+% Please add the following required packages to your document preamble:
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+  \begin{table}[]
+    \centering
+    \caption{Results from Type filtering}
+    \label{tab:results-types}
+    \begin{tabular}{@{}llllllllll@{}}
+    \toprule
+    \rowcolor[HTML]{FFFFFF} 
+    \textbf{Normalized} & \textbf{Topics} & \textbf{Filter Level} & \textbf{Feature Type} & \textbf{Model}      & \textbf{Train Accuracy} & \textbf{Test Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1 Score} \\ \midrule
+    No                  & -               & Types                 & Characters            & Linear SVC          & 0.2621870882740448      & 0.26930464848252017    & 0.19               & 0.27            & 0.20              \\
+    No                  & -               & Types                 & Characters            & Logistic Regression & 0.11495388669301712     & 0.1260084517864003     & 0.25               & 0.13            & 0.16              \\
+    Yes                 & -               & Types                 & Characters            & Extra Trees         & 0.2439064558629776      & 0.24587014982712255    & 0.16               & 0.25            & 0.17              \\
+    No                  & -               & Types                 & Characters            & AdaBoost            & 0.22266139657444006     & 0.2155205532078371     & 0.21               & 0.22            & 0.13              \\
+    Yes                 & -               & Types                 & Characters            & GradBoost           & 0.24769433465085638     & 0.2397233960814445     & 0.17               & 0.24            & 0.18              \\
+    -                   & 100             & Types                 & Topic Distribution    & Linear SVC          & 0.2887022397891963      & 0.27276219746446406    & 0.28               & 0.27            & 0.20              \\
+    -                   & 100             & Types                 & Topic Distribution    & Logistic Regression & 0.13554018445322794     & 0.13753361505954667    & 0.25               & 0.14            & 0.15              \\
+    -                   & 100             & Types                 & Topic Distribution    & Extra Trees         & 0.25148221343873517     & 0.24433346139070303    & 0.21               & 0.24            & 0.21              \\
+    -                   & 100             & Types                 & Topic Distribution    & AdaBoost            & 0.255764163372859       & 0.2535535920092201     & 0.17               & 0.25            & 0.14              \\
+    -                   & 100             & Types                 & Topic Distribution    & GradBoost           & 0.28573781291172595     & 0.27276219746446406    & 0.21               & 0.27            & 0.22              \\
+    -                   & 75              & Types                 & Topic Distribution    & Linear SVC          & 0.26515151515151514     & 0.26661544371878604    & 0.19               & 0.27            & 0.20              \\
+    -                   & 75              & Types                 & Topic Distribution    & Logistic Regression & 0.10013175230566534     & 0.11025739531310026    & 0.28               & 0.11            & 0.13              \\
+    -                   & 75              & Types                 & Topic Distribution    & Extra Trees         & 0.22990777338603424     & 0.2320399538993469     & 0.19               & 0.23            & 0.20              \\
+    -                   & 75              & Types                 & Topic Distribution    & AdaBoost            & 0.2524703557312253      & 0.2451018056089128     & 0.15               & 0.25            & 0.15              \\
+    -                   & 75              & Types                 & Topic Distribution    & GradBoost           & 0.2666337285902503      & 0.25509028044563964    & 0.22               & 0.26            & 0.20              \\
+    -                   & 50              & Types                 & Topic Distribution    & Linear SVC          & 0.2723978919631094      & 0.2723780253553592     & 0.17               & 0.27            & 0.19              \\
+    -                   & 50              & Types                 & Topic Distribution    & Logistic Regression & 0.15184453227931488     & 0.16135228582404917    & 0.30               & 0.16            & 0.18              \\
+    -                   & 50              & Types                 & Topic Distribution    & Extra Trees         & 0.23517786561264822     & 0.24241260084517863    & 0.21               & 0.24            & 0.22              \\
+    -                   & 50              & Types                 & Topic Distribution    & AdaBoost            & 0.2689393939393939      & 0.269688820591625      & 0.16               & 0.27            & 0.19              \\
+    -                   & 50              & Types                 & Topic Distribution    & GradBoost           & 0.272068511198946       & 0.276219746446408      & 0.22               & 0.28            & 0.23              \\
+    -                   & 25              & Types                 & Topic Distribution    & Linear SVC          & 0.26366930171277997     & 0.263542066845947      & 0.18               & 0.26            & 0.17              \\
+    -                   & 25              & Types                 & Topic Distribution    & Logistic Regression & 0.10622529644268774     & 0.11870918171340761    & 0.28               & 0.12            & 0.14              \\
+    -                   & 25              & Types                 & Topic Distribution    & Extra Trees         & 0.2017457180500659      & 0.19708029197080296    & 0.18               & 0.20            & 0.19              \\
+    -                   & 25              & Types                 & Topic Distribution    & AdaBoost            & 0.2498353096179183      & 0.24932769880906647    & 0.17               & 0.25            & 0.15              \\
+    -                   & 25              & Types                 & Topic Distribution    & GradBoost           & 0.25889328063241107     & 0.2685363042643104     & 0.23               & 0.27            & 0.21              \\
+    -                   & 16              & Types                 & Topic Distribution    & Linear SVC          & 0.2658102766798419      & 0.2669996158278909     & 0.15               & 0.27            & 0.18              \\
+    -                   & 16              & Types                 & Topic Distribution    & Logistic Regression & 0.14410408432147562     & 0.14560122935074912    & 0.17               & 0.15            & 0.14              \\
+    -                   & 16              & Types                 & Topic Distribution    & Extra Trees         & 0.19911067193675888     & 0.1901651940069151     & 0.17               & 0.19            & 0.18              \\
+    -                   & 16              & Types                 & Topic Distribution    & AdaBoost            & 0.25757575757575757     & 0.24625432193622743    & 0.11               & 0.25            & 0.14              \\
+    -                   & 16              & Types                 & Topic Distribution    & GradBoost           & 0.2682806324110672      & 0.2673837879369958     & 0.21               & 0.27            & 0.21              \\
+    -                   & 10              & Types                 & Topic Distribution    & Linear SVC          & 0.26301054018445325     & 0.26815213215520556    & 0.14               & 0.27            & 0.17              \\
+    -                   & 10              & Types                 & Topic Distribution    & Logistic Regression & 0.12269433465085638     & 0.1244717633499808     & 0.20               & 0.12            & 0.12              \\
+    -                   & 10              & Types                 & Topic Distribution    & Extra Trees         & 0.18593544137022397     & 0.1828659239339224     & 0.17               & 0.18            & 0.18              \\
+    -                   & 10              & Types                 & Topic Distribution    & AdaBoost            & 0.25774044795783924     & 0.25701114099116407    & 0.18               & 0.26            & 0.19              \\
+    -                   & 10              & Types                 & Topic Distribution    & GradBoost           & 0.25559947299077734     & 0.2558586246638494     & 0.19               & 0.26            & 0.20              \\
+    Yes                 & 100             & Types                 & Topic Terms + TF      & Linear SVC          & 0.2877140974967062      & 0.2854398770649251     & 0.23               & 0.29            & 0.22              \\
+    Yes                 & 100             & Types                 & Topic Terms + TF      & Logistic Regression & 0.13142292490118576     & 0.13638109873223203    & 0.24               & 0.14            & 0.14              \\
+    No                  & 100             & Types                 & Topic Terms + TF      & Extra Trees         & 0.25905797101449274     & 0.26046868997310796    & 0.21               & 0.26            & 0.22              \\
+    No                  & 100             & Types                 & Topic Terms + TF      & AdaBoost            & 0.2625164690382082      & 0.26008451786400305    & 0.14               & 0.26            & 0.17              \\
+    No                  & 100             & Types                 & Topic Terms + TF      & GradBoost           & 0.28573781291172595     & 0.27276219746446406    & 0.21               & 0.27            & 0.22              \\
+    Yes                 & 75              & Types                 & Topic Terms + TF      & Linear SVC          & 0.26613965744400525     & 0.2593161736457933     & 0.20               & 0.26            & 0.20              \\
+    Yes                 & 75              & Types                 & Topic Terms + TF      & Logistic Regression & 0.10737812911725955     & 0.11717249327698809    & 0.28               & 0.12            & 0.14              \\
+    No                  & 75              & Types                 & Topic Terms + TF      & Extra Trees         & 0.2437417654808959      & 0.2489435266999616     & 0.20               & 0.25            & 0.21              \\
+    No                  & 75              & Types                 & Topic Terms + TF      & AdaBoost            & 0.24588274044795783     & 0.2431809450633884     & 0.14               & 0.24            & 0.15              \\
+    No                  & 75              & Types                 & Topic Terms + TF      & GradBoost           & 0.2666337285902503      & 0.25509028044563964    & 0.22               & 0.26            & 0.20              \\
+    Yes                 & 50              & Types                 & Topic Terms + TF      & Linear SVC          & 0.2765151515151515      & 0.27890895121014214    & 0.20               & 0.28            & 0.21              \\
+    Yes                 & 50              & Types                 & Topic Terms + TF      & Logistic Regression & 0.155467720685112       & 0.17018824433346139    & 0.31               & 0.17            & 0.19              \\
+    No                  & 50              & Types                 & Topic Terms + TF      & Extra Trees         & 0.25461133069828723     & 0.25662696888205916    & 0.22               & 0.26            & 0.22              \\
+    No                  & 50              & Types                 & Topic Terms + TF      & AdaBoost            & 0.25757575757575757     & 0.26431041106415676    & 0.19               & 0.26            & 0.14              \\
+    No                  & 50              & Types                 & Topic Terms + TF      & GradBoost           & 0.272068511198946       & 0.276219746446408      & 0.22               & 0.28            & 0.23              \\
+    Yes                 & 25              & Types                 & Topic Terms + TF      & Linear SVC          & 0.2621870882740448      & 0.2685363042643104     & 0.21               & 0.27            & 0.20              \\
+    Yes                 & 25              & Types                 & Topic Terms + TF      & Logistic Regression & 0.10869565217391304     & 0.1152516327314637     & 0.26               & 0.12            & 0.14              \\
+    No                  & 25              & Types                 & Topic Terms + TF      & Extra Trees         & 0.2330368906455863      & 0.24356511717249327    & 0.20               & 0.24            & 0.20              \\
+    No                  & 25              & Types                 & Topic Terms + TF      & AdaBoost            & 0.2549407114624506      & 0.253937764118325      & 0.16               & 0.25            & 0.18              \\
+    No                  & 25              & Types                 & Topic Terms + TF      & GradBoost           & 0.25889328063241107     & 0.2685363042643104     & 0.23               & 0.27            & 0.21              \\
+    Yes                 & 16              & Types                 & Topic Terms + TF      & Linear SVC          & 0.274703557312253       & 0.2831348444102958     & 0.22               & 0.28            & 0.22              \\
+    Yes                 & 16              & Types                 & Topic Terms + TF      & Logistic Regression & 0.13339920948616601     & 0.13138686131386862    & 0.20               & 0.13            & 0.13              \\
+    No                  & 16              & Types                 & Topic Terms + TF      & Extra Trees         & 0.24571805006587616     & 0.23933922397233962    & 0.19               & 0.24            & 0.20              \\
+    No                  & 16              & Types                 & Topic Terms + TF      & AdaBoost            & 0.25329380764163373     & 0.2431809450633884     & 0.16               & 0.24            & 0.15              \\
+    No                  & 16              & Types                 & Topic Terms + TF      & GradBoost           & 0.2682806324110672      & 0.2673837879369958     & 0.21               & 0.27            & 0.21              \\
+    Yes                 & 10              & Types                 & Topic Terms + TF      & Linear SVC          & 0.26910408432147565     & 0.27929312331924705    & 0.18               & 0.28            & 0.20              \\
+    Yes                 & 10              & Types                 & Topic Terms + TF      & Logistic Regression & 0.12697628458498023     & 0.13215520553207838    & 0.22               & 0.13            & 0.14              \\
+    No                  & 10              & Types                 & Topic Terms + TF      & Extra Trees         & 0.24703557312252963     & 0.24202842873607375    & 0.19               & 0.24            & 0.20              \\
+    No                  & 10              & Types                 & Topic Terms + TF      & AdaBoost            & 0.2554347826086957      & 0.25854782942758353    & 0.16               & 0.26            & 0.18              \\
+    No                  & 10              & Types                 & Topic Terms + TF      & GradBoost           & 0.25559947299077734     & 0.2558586246638494     & 0.19               & 0.26            & 0.20              \\
+  \end{tabular}
+\end{table}
+\clearpage
+
+\begin{table}[]
+  \centering
+  \caption{Results from extreme filtering}
+  \label{tab:results-extremes}
+  \begin{tabular}{@{}llllllllll@{}}
+      \toprule
+      \rowcolor[HTML]{FFFFFF} 
+      \textbf{Normalized} & \textbf{Topics} & \textbf{Filter Level} & \textbf{Feature Type} & \textbf{Model}      & \textbf{Train Accuracy} & \textbf{Test Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1 Score} \\ \midrule
+
+    No                  & -               & Extremes              & Characters            & Linear SVC          & 0.2621870882740448      & 0.26930464848252017    & 0.19               & 0.27            & 0.20              \\
+    No                  & -               & Extremes              & Characters            & Logistic Regression & 0.11495388669301712     & 0.1260084517864003     & 0.25               & 0.13            & 0.16              \\
+    Yes                 & -               & Extremes              & Characters            & Extra Trees         & 0.2513175230566535      & 0.2427967729542835     & 0.18               & 0.24            & 0.17              \\
+    No                  & -               & Extremes              & Characters            & AdaBoost            & 0.2185441370223979      & 0.21667306953515175    & 0.13               & 0.22            & 0.15              \\
+    Yes                 & -               & Extremes              & Characters            & GradBoost           & 0.24341238471673254     & 0.24932769880906647    & 0.21               & 0.25            & 0.20              \\
+    -                   & 100             & Extremes              & Topic Distribution    & Linear SVC          & 0.2768445322793149      & 0.27276219746446406    & 0.21               & 0.27            & 0.20              \\
+    -                   & 100             & Extremes              & Topic Distribution    & Logistic Regression & 0.1541501976284585      & 0.15097963887821744    & 0.26               & 0.15            & 0.18              \\
+    -                   & 100             & Extremes              & Topic Distribution    & Extra Trees         & 0.25774044795783924     & 0.2535535920092201     & 0.22               & 0.25            & 0.22              \\
+    -                   & 100             & Extremes              & Topic Distribution    & AdaBoost            & 0.25                    & 0.25163273146369575    & 0.14               & 0.25            & 0.16              \\
+    -                   & 100             & Extremes              & Topic Distribution    & GradBoost           & 0.26498682476943347     & 0.2742988859008836     & 0.25               & 0.27            & 0.22              \\
+    -                   & 75              & Extremes              & Topic Distribution    & Linear SVC          & 0.283596837944664       & 0.2908182865923934     & 0.23               & 0.29            & 0.23              \\
+    -                   & 75              & Extremes              & Topic Distribution    & Logistic Regression & 0.15151515151515152     & 0.15328467153284672    & 0.29               & 0.15            & 0.18              \\
+    -                   & 75              & Extremes              & Topic Distribution    & Extra Trees         & 0.27618577075098816     & 0.28006146753745675    & 0.24               & 0.28            & 0.24              \\
+    -                   & 75              & Extremes              & Topic Distribution    & AdaBoost            & 0.266304347826087       & 0.2612370341913177     & 0.17               & 0.26            & 0.17              \\
+    -                   & 75              & Extremes              & Topic Distribution    & GradBoost           & 0.28343214756258234     & 0.2885132539377641     & 0.24               & 0.29            & 0.25              \\
+    -                   & 50              & Extremes              & Topic Distribution    & Linear SVC          & 0.2817852437417655      & 0.28275067230119094    & 0.21               & 0.28            & 0.22              \\
+    -                   & 50              & Extremes              & Topic Distribution    & Logistic Regression & 0.14015151515151514     & 0.14022281982328083    & 0.27               & 0.14            & 0.16              \\
+    -                   & 50              & Extremes              & Topic Distribution    & Extra Trees         & 0.26811594202898553     & 0.2612370341913177     & 0.21               & 0.26            & 0.22              \\
+    -                   & 50              & Extremes              & Topic Distribution    & AdaBoost            & 0.255764163372859       & 0.2581636573184787     & 0.16               & 0.26            & 0.18              \\
+    -                   & 50              & Extremes              & Topic Distribution    & GradBoost           & 0.28540843214756256     & 0.29273914713791777    & 0.25               & 0.29            & 0.25              \\
+    -                   & 25              & Extremes              & Topic Distribution    & Linear SVC          & 0.2840909090909091      & 0.2908182865923934     & 0.22               & 0.29            & 0.24              \\
+    -                   & 25              & Extremes              & Topic Distribution    & Logistic Regression & 0.1529973649538867      & 0.1590472531694199     & 0.28               & 0.16            & 0.18              \\
+    -                   & 25              & Extremes              & Topic Distribution    & Extra Trees         & 0.25461133069828723     & 0.26776796004610065    & 0.23               & 0.27            & 0.23              \\
+    -                   & 25              & Extremes              & Topic Distribution    & AdaBoost            & 0.26399868247694336     & 0.2719938532462543     & 0.22               & 0.27            & 0.20              \\
+    -                   & 25              & Extremes              & Topic Distribution    & GradBoost           & 0.2875494071146245      & 0.2981175566653861     & 0.24               & 0.30            & 0.25              \\
+    -                   & 16              & Extremes              & Topic Distribution    & Linear SVC          & 0.28804347826086957     & 0.2892815981559739     & 0.21               & 0.29            & 0.22              \\
+    -                   & 16              & Extremes              & Topic Distribution    & Logistic Regression & 0.13768115942028986     & 0.1371494429504418     & 0.28               & 0.14            & 0.13              \\
+    -                   & 16              & Extremes              & Topic Distribution    & Extra Trees         & 0.25214097496706195     & 0.2558586246638494     & 0.22               & 0.26            & 0.23              \\
+    -                   & 16              & Extremes              & Topic Distribution    & AdaBoost            & 0.2628458498023715      & 0.25662696888205916    & 0.19               & 0.26            & 0.18              \\
+    -                   & 16              & Extremes              & Topic Distribution    & GradBoost           & 0.29907773386034253     & 0.3031117940837495     & 0.27               & 0.30            & 0.27              \\
+    -                   & 10              & Extremes              & Topic Distribution    & Linear SVC          & 0.2702569169960474      & 0.2704571648098348     & 0.19               & 0.27            & 0.19              \\
+    -                   & 10              & Extremes              & Topic Distribution    & Logistic Regression & 0.12928194993412384     & 0.13446023818670763    & 0.27               & 0.13            & 0.16              \\
+    -                   & 10              & Extremes              & Topic Distribution    & Extra Trees         & 0.19746376811594202     & 0.21744141375336154    & 0.20               & 0.22            & 0.21              \\
+    -                   & 10              & Extremes              & Topic Distribution    & AdaBoost            & 0.26103425559947296     & 0.2685363042643104     & 0.18               & 0.27            & 0.20              \\
+    -                   & 10              & Extremes              & Topic Distribution    & GradBoost           & 0.2755270092226614      & 0.28275067230119094    & 0.22               & 0.28            & 0.24              \\
+    Yes                 & 100             & Extremes              & Topic Terms + TF      & Linear SVC          & 0.2845849802371542      & 0.2746830580099885     & 0.22               & 0.27            & 0.23              \\
+    No                  & 100             & Extremes              & Topic Terms + TF      & Logistic Regression & 0.1615612648221344      & 0.16442566269688821    & 0.28               & 0.16            & 0.19              \\
+    Yes                 & 100             & Extremes              & Topic Terms + TF      & Extra Trees         & 0.27108036890645587     & 0.26776796004610065    & 0.22               & 0.27            & 0.23              \\
+    No                  & 100             & Extremes              & Topic Terms + TF      & AdaBoost            & 0.24687088274044797     & 0.25662696888205916    & 0.19               & 0.26            & 0.16              \\
+    Yes                 & 100             & Extremes              & Topic Terms + TF      & GradBoost           & 0.27322134387351776     & 0.2812139838647714     & 0.24               & 0.28            & 0.24              \\
+    Yes                 & 75              & Extremes              & Topic Terms + TF      & Linear SVC          & 0.2936429512516469      & 0.28659239339223974    & 0.23               & 0.29            & 0.23              \\
+    No                  & 75              & Extremes              & Topic Terms + TF      & Logistic Regression & 0.15942028985507245     & 0.14521705724164424    & 0.26               & 0.15            & 0.17              \\
+    Yes                 & 75              & Extremes              & Topic Terms + TF      & Extra Trees         & 0.2781620553359684      & 0.28006146753745675    & 0.24               & 0.28            & 0.24              \\
+    No                  & 75              & Extremes              & Topic Terms + TF      & AdaBoost            & 0.258399209486166       & 0.2581636573184787     & 0.16               & 0.26            & 0.17              \\
+    Yes                 & 75              & Extremes              & Topic Terms + TF      & GradBoost           & 0.2765151515151515      & 0.28659239339223974    & 0.24               & 0.29            & 0.25              \\
+    Yes                 & 50              & Extremes              & Topic Terms + TF      & Linear SVC          & 0.2890316205533597      & 0.28044563964656166    & 0.23               & 0.28            & 0.23              \\
+    No                  & 50              & Extremes              & Topic Terms + TF      & Logistic Regression & 0.1529973649538867      & 0.1498271225509028     & 0.29               & 0.15            & 0.18              \\
+    Yes                 & 50              & Extremes              & Topic Terms + TF      & Extra Trees         & 0.2763504611330698      & 0.27775643488282753    & 0.23               & 0.28            & 0.23              \\
+    No                  & 50              & Extremes              & Topic Terms + TF      & AdaBoost            & 0.2549407114624506      & 0.2597003457548982     & 0.12               & 0.26            & 0.14              \\
+    Yes                 & 50              & Extremes              & Topic Terms + TF      & GradBoost           & 0.28573781291172595     & 0.28620822128313483    & 0.24               & 0.29            & 0.24              \\
+    Yes                 & 25              & Extremes              & Topic Terms + TF      & Linear SVC          & 0.28804347826086957     & 0.2908182865923934     & 0.22               & 0.29            & 0.24              \\
+    No                  & 25              & Extremes              & Topic Terms + TF      & Logistic Regression & 0.12878787878787878     & 0.12946600076834422    & 0.27               & 0.13            & 0.16              \\
+    Yes                 & 25              & Extremes              & Topic Terms + TF      & Extra Trees         & 0.274703557312253       & 0.28236650019208603    & 0.23               & 0.28            & 0.24              \\
+    No                  & 25              & Extremes              & Topic Terms + TF      & AdaBoost            & 0.2564229249011858      & 0.26392623895505185    & 0.18               & 0.26            & 0.19              \\
+    Yes                 & 25              & Extremes              & Topic Terms + TF      & GradBoost           & 0.2824440052700922      & 0.2896657702650788     & 0.24               & 0.29            & 0.25              \\
+    Yes                 & 16              & Extremes              & Topic Terms + TF      & Linear SVC          & 0.2906785243741766      & 0.2981175566653861     & 0.25               & 0.30            & 0.25              \\
+    No                  & 16              & Extremes              & Topic Terms + TF      & Logistic Regression & 0.15349143610013175     & 0.15635804840568573    & 0.29               & 0.16            & 0.19              \\
+    Yes                 & 16              & Extremes              & Topic Terms + TF      & Extra Trees         & 0.27585638998682477     & 0.2850557049558202     & 0.23               & 0.29            & 0.24              \\
+    No                  & 16              & Extremes              & Topic Terms + TF      & AdaBoost            & 0.26235177865612647     & 0.269688820591625      & 0.20               & 0.27            & 0.22              \\
+    Yes                 & 16              & Extremes              & Topic Terms + TF      & GradBoost           & 0.29117259552042163     & 0.29658086822896657    & 0.27               & 0.30            & 0.26              \\
+    Yes                 & 10              & Extremes              & Topic Terms + TF      & Linear SVC          & 0.27618577075098816     & 0.2758355743373031     & 0.22               & 0.28            & 0.21              \\
+    No                  & 10              & Extremes              & Topic Terms + TF      & Logistic Regression & 0.11940052700922266     & 0.11794083749519785    & 0.25               & 0.12            & 0.14              \\
+    Yes                 & 10              & Extremes              & Topic Terms + TF      & Extra Trees         & 0.25922266139657446     & 0.26392623895505185    & 0.22               & 0.26            & 0.22              \\
+    No                  & 10              & Extremes              & Topic Terms + TF      & AdaBoost            & 0.2572463768115942      & 0.2547061083365348     & 0.16               & 0.25            & 0.16              \\
+    Yes                 & 10              & Extremes              & Topic Terms + TF      & GradBoost           & 0.28194993412384717     & 0.2819823280829812     & 0.25               & 0.28            & 0.24             
+    \end{tabular}
+    \end{table}
+    \clearpage

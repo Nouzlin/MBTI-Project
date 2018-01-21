@@ -1,0 +1,235 @@
+\section{Theory}
+
+This section will briefly cover the basics of Myers-Briggs Type Indicator, language modelling, feature representations, common supervised learning models and evaluation metrics.
+
+\subsection{Myers-Briggs Type Indicator}
+The foundation of the Myers-Briggs Type Indicator (MBTI) is derived from the work of Carl G. Jung \cite{jung2014psychological}.
+The idea behind MBTI was to make the concepts observed by Jung more accessible to the public \cite{mbti}.
+Table \ref{tab:mbti-types} contains the 16 personality types defined by Myers-Briggs \cite{mbti}.
+
+\subsubsection{Introversion and Extroversion}
+Introversion (I) and extroversion (E) is used to describe what an individual focuses on and draws their energy from.
+Introversion means that the individual focuses on his/her own "world", which means that they draw energy from ideas and memories and from self-reflection \cite{mbti-IE}.
+Extroversion is the opposite side; energy is drawn from activities and events with others \cite{mbti-IE}.
+Problems for people with the extroversion type are typically solved by talking and discussing with others out loud \cite{mbti-IE}.
+
+\subsubsection{Intuition and Sensing}
+Intuition (N) and sensing (S) describes how individuals handles information.
+Intuition means that individuals pay more attention to patterns, impressions, theoretical concepts and abstract theories \cite{mbti-NS}.
+Sensing is, on the other hand, connected to the five senses.
+Information is gathered from the physical connection to the world, e.g., what you hear, smell and touch \cite{mbti-NS}.
+
+\subsubsection{Thinking and Feeling}
+Thinking (T) and feeling (F) covers how individuals perform decision making.
+Individuals with the thinking type typically analyse ground truths and use logical reasoning to make a decision; pros and cons are analysed \cite{mbti-TF}.
+The feeling type describes people who take the opinion of others into consideration \cite{mbti-TF}.
+They weigh the outcome of the situation and try to maintain harmony, by caring about the point-of-view of others \cite{mbti-TF}.
+
+\subsubsection{Judging and Perceiving}
+Judging (J) and perceiving (P) is the final pair of the MBTI.
+This pair is related to how others typically see you.
+People with the judging trait usually live more structured lives than those with the perceiving trait \cite{mbti-JP}.
+The major difference between this pair and the pairs covered before is that this trait is based on the side individuals let others see \cite{mbti-JP}.
+For example, an individual can be structured and live ordered lives when alone, but in the interaction with others they tend to be interpreted as spontaneous and open-ended \cite{mbti-JP}.
+
+\begin{table}[!t]
+    %% increase table row spacing, adjust to taste
+    \renewcommand{\arraystretch}{3}
+    % if using array.sty, it might be a good idea to tweak the value of
+    % \extrarowheight as needed to properly center the text within the cells
+    \caption{Myers-Briggs Type Indicator Table}
+    \label{tab:mbti-types}
+    \centering
+    %% Some packages, such as MDW tools, offer better commands for making tables
+    %% than the plain LaTeX2e tabular which is used here.
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        ISTJ & ISFJ & INFJ & INTJ \\
+        \hline
+        ISTP & ISFP & INFP & INTP \\
+        \hline
+        ESTP & ESFP & ENFP & ENTP \\
+        \hline
+        ESTJ & ESFJ & ENFJ & ENTJ \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\subsection{Document Representation}
+A document $d_i$ can be mathematically represented as a vector $d_i = (w_1, \ldots, w_N)$, where $w_i$ is the $i$-th word (term) in the document.
+The words (terms) could, for example, be unigrams (Section \ref{sec:theory-bow}), bigrams (Section \ref{sec:theory-bigram}) or letters (Section \ref{sec:theory-letters}).
+
+\subsection{Latent Dirichlet Allocation}
+The latent Dirichlet allocation (LDA) model produces top topic terms for each topic in the model.
+It can also be used to calculate the topic distribution for a document.
+
+The LDA model, described by Blei et al. in \cite{Blei2003}, is a probabilistic generative model built on the notion of underlying topics.
+A document can belong to several topics simultaneously (with a probability $p(\alpha_i)$ of belonging to topic $\alpha_i$).
+All the terms in a collection can belong to their own topic(s).
+Each term in a document in a corpus is assumed to be generated from a topic (following a multinomial distribution with a latent parameter drawn from a Dirichlet distribution).
+The LDA model can thus for a given document calculate the probability of that document belonging to some topic $\alpha_i$.
+
+\subsection{Features} \label{sec:theory-features}
+
+\subsubsection{Normalisation}
+Normalisation transforms the data values above $0$ in the feature vector to be in the range $(0, 1]$.
+
+\subsubsection{Bag-Of-Words} \label{sec:theory-bow}
+The bag-of-words model is a simple representation of a document.
+The model ignores the order of words and the words occurring before the $i$-th word ($w_i$):
+
+\begin{equation*}
+    p(w_i|w_1, \ldots, w_{i-1}) = p(w_i)
+\end{equation*}
+
+The feature vector consists of occurrence counts of words in a dictionary, where each word is represented by an index in the vector.
+The dictionary can either be predefined or created from the training set.
+One limitation of the bag-of-words model is how to handle words not present in the training corpus.
+Unknown words can either be discarded or replaced with an \emph{UNK} tag.
+The count vector can then be normalised, smoothed or used as-is.
+
+\subsubsection{TF-IDF}
+Term frequency and inverted document frequency (TF-IDF) can be constructed from a bag-of-words model.
+The TF is the word (term) counts for a document (typically normalised) and the IDF is the document frequency for that word
+
+\begin{equation*} \label{eq:idf}
+    IDF_{k_i} = log(N / n_i)
+\end{equation*}
+where $N$ is the number of documents and $n_i$ is the number of documents where term $k_i$ appears.
+
+\subsubsection{Bigram Model} \label{sec:theory-bigram}
+The bigram model is similar to the bag-of-words model in Section \ref{sec:theory-bow}.
+Instead of using counts of single words the bigram model uses pairs of adjacent words as features:
+
+\begin{equation*}
+    p(w_i|w_1, \ldots, w_{i-1}) = p(w_i|w_{i-1})
+\end{equation*}
+
+The appearance order for different pairs is ignored after construction; it is only the counts of pairs that are interesting.
+
+\subsubsection{Bag-Of-Letters} \label{sec:theory-letters}
+The bag-of-letters feature vector is a simplified variant of the Bag-of-words model.
+The features are constructed from a predefined alphabet consisting of letters and characters.
+Similar to the bag-of-words model, the symbols in the alphabet are counted for each document.
+The feature vector can then be normalised or used as-is.
+
+\subsubsection{Topic Distribution (TD)}
+The LDA model can calculate the probability distribution $$T_{d_i}=[p(\alpha_1),\ldots,p(\alpha_t)]$$ over all $t$ topics ($\alpha_1,\ldots,\alpha_t$) for a given document $d_i$.
+$p(\alpha_i)$ is the probability that document $d_i$ belongs to topic $\alpha_i$.
+The distribution can thus be used to determine which topic(s) the document was generated from.
+This probability distribution can be directly used as a feature vector for various models.
+
+\subsubsection{Topic Terms (TT)} \label{sec:theory-topic-terms}
+In \cite{Chen2016}, Chen et al. try to use LDA to improve the performance of Support Vector Machines for text classification.
+In their work they combine the topic distribution of a document from a LDA model together with the top terms for the topics.
+The same approach is tested in this work.
+The topic terms feature vectors are constructed by first calculating the topic distribution $T_{d_i}$ for each document $d_i$.
+Then, for each topic $\alpha_i$, the $n$ top topic terms ($\beta_{i, 1}, \ldots, \beta_{i, n}$) are used to construct the feature vector.
+The topic distribution and the topic terms can be retrieved from a LDA model with $t$ topics.
+The feature vector $f_{d_i}$ for a document $d_i$  is thus defined by 
+\begin{equation*}
+    f_{d_i}=[\beta_1, \ldots, \beta_t]
+\end{equation*}
+where $\beta_i$ is short-hand notation for the values $\beta_{i, 1}, \ldots, \beta_{i, n}$. 
+The dimension of a topic terms feature vector for one document is $t*n$ feature values.
+Each value in the feature vector is initialised to zero.
+
+The topic distribution determines how many top topic terms shall be counted from each topic in the LDA model.
+If topic $\alpha_i$  has probability $p_i$, then the number of top topic terms to be used ($n_i$) from topic $\alpha_i$ is given by Equation \ref{eq:n-top-topic-terms}.
+
+\begin{equation} \label{eq:n-top-topic-terms}
+    n_i=Round(p_i*n)
+\end{equation}
+
+The $n-n_i$ top terms not used in topic $\alpha_i$ have their feature values set to zero.
+The feature value for each of the $n_i$ top terms is set according to Equation \ref{eq:feature-value}.
+
+\begin{equation} \label{eq:feature-value}
+    feature\ value =\left\{
+                \begin{array}{ll}
+                  1+TF, \quad \ if\ term\ present\\
+                  1, \qquad\qquad otherwise
+                \end{array}
+              \right.
+\end{equation}
+
+If the term is present in document $d_i$ it is counted and the feature value is set to $1+TF$.
+$TF$  is the number of times the term occurs in document $d_i$.  
+If the term is not in the document, the feature value for the term is set to $1$.
+If a document $d_i$  is calculated by the LDA to belong to a topic $\alpha_i$, then Equation \ref{eq:feature-value} would give more weight to the top terms that do occur in $d_i$, compared to the missing ones.
+
+For example, a LDA with five topics ($t=5$) and a document $d_i$  with the topic distribution 
+\[T_{d_i}=[0.01, 0.15, 0.75, 0.09, 0]\]
+and $n=10$ top topic terms would result in a feature vector $f_{d_i}$ where:
+
+\begin{itemize}
+    \item $n_1$ is rounded down to zero, thus setting all values for the 10 top topic terms in $\alpha_1$ to zero.
+    \item $n_2$ is rounded up to two, which means that only the values for the two top terms in $\alpha_2$ are updated to $1+TF$.
+    \item $n_3$  is rounded up to 8, which means the values for the 8 top terms in topic $\alpha_3$ are updated.
+    \item $n_4$ is rounded up to one, which means that only the value for the top term in topic $\alpha_4$ is updated.
+    \item $n_5$  is zero, thus all 10 values are set to zero (same as $n_1$).
+\end{itemize}
+
+\subsection{Models} \label{sec:theory-models}
+
+Various supervised models can be used for classification.
+This section will very briefly cover the models used in this work.
+
+\subsubsection{Linear Support Vector Classification}
+The linear Support Vector Classifier (LinSVC) can efficiently handle sparse features\footnote{http://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html}.
+The SVC has a slightly different mathematical formulation than the traditional Support Vector Machine (SVM), but the idea behind the model is the same as in the SVM case.
+A hyperplane is constructed in order to try and separate the different classes with as big of a margin as possible.
+The margin is defined as the distance from the hyperplane to the nearest point.
+Slack can be introduced in order to allow for misclassifications, as needed in the case of data not being linearly separable.
+Regularisation is typically used in order to control the slack, otherwise the margin would be maximised by potentially misclassifying all data points.
+
+\subsubsection{Logistic Regression Classifier}
+The Logistic Regression (LR) classifier, also called logit or MaxEnt, is a probabilistic classifier consisting of linear combinations of predictor functions and weights.
+The predictor function calculates the probability of a data point $X_i$ belonging to a class $K_i$ ($P(K_i|X_i)$), divided by the probability that it belongs to all other classes ($P(\{K \setminus K_i\} | X_i)$).
+
+\subsubsection{Extra Trees Classifier}
+The Extra Trees (ET) classifier is a variant of the well-known Random Forest (RF) classifier.
+Instead of choosing the best decision boundary at each split it continuously chooses attributes and cut-points at random \cite{Geurts2006}.
+It can be heavily tuned to the problem at hand with various parameters \cite{Geurts2006}.
+
+\subsubsection{AdaBoost Classifier}
+The AdaBoost (AB) classifier is an ensemble method which combines multiple weak learners (estimators) \cite{Freund1995}.
+The later weak learners in the chain are tweaked in order to solve those samples that were misclassified by the previous learners \cite{Freund1995}.
+The result of each weak learner is combined into a weighted sum \cite{Freund1995}.
+
+\subsubsection{Gradient Boosting Classifier}
+The Gradient Boosting (GB) classifier is a variant of the AdaBoost classifier.
+If the exponential loss function is used, then it turns into the AdaBoost classifier.
+The model creates multiple decision trees that are, in each iterative stage, fitted with the negative gradient of the multinomial deviance loss function.
+
+\subsection{Exploratory Data Analysis}
+Exploratory data analysis (EDA) is a broad concept containing various techniques \cite{Hoaglin2003, Tukey1977, Velleman1981} that can be used to explore and analyse data.
+Some early techniques include stem-and-leaf plots and box plots.
+EDA can be seen as applying tools and statistics in a meaningful way.
+It could, for example, be used to perform variance analysis, detect outliers or smooth the data \cite{Hoaglin2003, Tukey1977, Velleman1981}.
+
+\subsubsection{Word clouds}
+In the field of NLP, the use of word clouds can help visualise important aspects of the data.
+Word clouds are generated by simply counting the occurrence of each word in the data set and presenting the most common words in an image.
+The most frequent words are typically presented with a larger font.
+
+\subsection{Evaluation Metrics} \label{sec:evaluation-metrics}
+Common evaluation metrics in the NLP field are Accuracy (Equation \ref{eq:accuracy}), Precision (Equation \ref{eq:precision}), Recall (Equation \ref{eq:recall}) and F1 Score (Equation \ref{eq:f1-score}).
+They are computed by calculating the number of True Positives (TP), True Negatives (TN), False Positives (FP) and False Negatives (FN).
+
+\begin{equation} \label{eq:accuracy}
+    Accuracy = \frac{TP + TN}{TP + TN + FP + FN}
+\end{equation}
+
+\begin{equation} \label{eq:precision}
+    Precision = \frac{TP}{TP + FP}
+\end{equation}
+
+\begin{equation} \label{eq:recall}
+    Recall = \frac{TP}{TP + FN}
+\end{equation}
+
+\begin{equation} \label{eq:f1-score}
+    F1\ Score = \frac{2 * Recall * Precision}{Recall + Precision}
+\end{equation}
+

@@ -1,0 +1,59 @@
+\section{Results}
+
+The results obtained from the initial model (Section \ref{sec:method-initial-models}) are presented in Table \ref{tab:initial-results}.
+The Extra Trees (ET) classifier performed best with a cross-validated training accuracy of 64.9\%.
+The Logistic Regression (LR) classifier has a cross-validated training accuracy of 47.5\%.
+
+Table \ref{tab:filter-results} presents the results for the type-filtered models (Section \ref{sec:method-type-filter-models}).
+The best type-filtered model is a Linear SVC (LinSVC) model trained with a topic distribution (TD) feature vector for 100 topics.
+The best cross-validated training accuracy achieved is 28.9\%.
+
+Table \ref{tab:extreme-results} has the results for the extreme-filtered models (Section \ref{sec:method-extreme-filter-models}).
+The best extreme-filtered model is a Gradient Boosting (GB) classifier with a TD for 16 topics as a feature vector.
+The cross-validated training accuracy achieved with the GB model is 29.9\%.
+
+The complete list of results are presented in Appendix \ref{appendix:results}.
+\begin{table}[!t]
+    \centering
+    \caption{Results from Initial Model}
+    \label{tab:initial-results}
+    \begin{tabular}{@{}llllllllll@{}}
+    \toprule
+    \rowcolor[HTML]{FFFFFF} 
+    \textbf{Model} & \textbf{Train Accuracy} & \textbf{Test Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1 Score} \\ \midrule
+    ET & 0.649 & 0.649 & 0.65 & 0.65 & 0.64 \\
+    LR & 0.473 & 0.475 & 0.64 & 0.47 & 0.51
+\end{tabular}
+\end{table}
+
+\begin{table}[!t]
+    \centering
+    \caption{Top 5 Results from Type Filter Models}
+    \label{tab:filter-results}
+    \begin{tabular}{@{}llllllllll@{}}
+    \toprule
+    \rowcolor[HTML]{FFFFFF} 
+    \textbf{Model} & \textbf{Topics} & \textbf{Train Acc} & \textbf{Test Acc} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} \\ \midrule
+    LinSVC (TD) & 100 & 0.289 & 0.273 & 0.28 & 0.27 & 0.20 \\
+    LinSVC (TT) & 100 & 0.288 & 0.285 &	0.23 & 0.29	& 0.22 \\
+    GB (TD)     & 100 & 0.286 &	0.273 &	0.21 & 0.27	& 0.22 \\
+    GB (TT)     & 100 & 0.286 & 0.273 &	0.21 & 0.27 & 0.22 \\
+    LinSVC (TT) & 50  & 0.277 & 0.279 & 0.20 & 0.28 & 0.21
+\end{tabular}
+\end{table}
+
+\begin{table}[!t]
+    \centering
+    \caption{Top 5 Results from Extreme Filter Models}
+    \label{tab:extreme-results}
+    \begin{tabular}{@{}llllllllll@{}}
+    \toprule
+    \rowcolor[HTML]{FFFFFF} 
+    \textbf{Model} & \textbf{Topics} & \textbf{Train Acc} & \textbf{Test Acc} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} \\ \midrule
+    GB (TD)     & 16 & 0.299 & 0.303 & 0.27 & 0.30 & 0.27 \\
+    LinSVC (TT) & 75 & 0.294 & 0.287 & 0.23 & 0.29 & 0.23 \\
+    GB (TT)     & 16 & 0.291 & 0.297 & 0.27	& 0.30 & 0.26 \\
+    LinSVC (TT) & 16 & 0.291 & 0.298 & 0.25	& 0.30 & 0.25 \\
+    LinSVC (TT) & 50 & 0.289 & 0.280 & 0.23	& 0.28 & 0.23
+\end{tabular}
+\end{table}
