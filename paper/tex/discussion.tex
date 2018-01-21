@@ -1,7 +1,55 @@
 \section{Discussion}
 
-Why was only URLs tagged?
+This chapter will discuss the limitations of the data set and the different results obtained for the three filter level models. 
 
 \subsection{Data Set Limitations}
 
-\blindtext
+The data set used in this work contains numerous limitations, which are covered in the sections below.
+
+\subsubsection{Self-Referencing Data}
+The MBTI of a user is frequently self-referenced in the posts by that user. 
+The self-referencing means that the unfiltered models learn that it is best to predict the most frequent MBTI in the document.
+The Extra Trees model achieves an accuracy of 64.9\% with the unfiltered data set.
+The accuracy could potentially be higher if one would create a simple if-else case and predict the MBTI that is the most frequent in the document.
+However, self-referencing is not a realistic model to use.
+It is a symptom of the origin of the data set; the forum the data originates from is used to discuss Myers-Briggs types.
+
+\subsubsection{Myers-Briggs Type Indicator Imbalance}
+The data set is overly represented by certain MBTIs, see Figure \ref{fig:types-barplot} in Appendix \ref{appendix:types-barplot}.
+The INFP type is represented the most in the data set (21\%).
+Always predicting the majority type would lead to a train and test accuracy of 21.1\%.
+However, the precision, recall and F1 score metrics would be 0.04, 0.21 and 0.07, respectively.
+Thus, the results obtained and presented in Table \ref{tab:filter-results} and in Table \ref{tab:extreme-results} suggest better performance than the null hypothesis classification would.
+
+The validity of MBTI, based on the writing of a user, can not be confirmed by this work.
+A weak connection is suggested by the models trained, but further work is needed, reasonably on a different data set.
+The best classifier trained is slightly worse than the 37\% accuracy achieved by Ma et al. in \cite{maneural}.
+
+\subsubsection{Limited Post Length}
+The EDA analysis performed indicates that some posts by users are cut-off.
+A post can end mid-sentence and simply be followed by "$\ldots$".
+This limits the amount of information that could be extracted from the posts, as the length of posts could be used as a feature.
+
+\subsubsection{Tagging}
+Only URLs were tagged in this work.
+It would perhaps have yielded better results if also numbers and user-mentions (prefixed by "@") would have been tagged or removed.
+
+\subsubsection{Filter Levels and Feature Types}
+The results improved with the number of topics used for the type-filtered models.
+The improvement could be explained by a larger corpus used when creating the LDA models.
+When extreme terms are filtered the number of topics needed seem to decrease.
+
+The differences between the two feature types are minimal.
+The results indicate that the topic distribution (TD) features perform as well as the topic terms (TT) features.
+One reason for the similar performance could be the feature reduction happening in both cases.
+The topic distribution feature is bound to the number of topics used in the LDA.
+The topic terms feature is bound by the number of topics used, and the number of top terms extracted for each topic.
+The results could have potentially differed if a larger or smaller number of top terms were extracted.
+
+\subsubsection{Corpus}
+The corpus is created from the training data, which means that terms not present in the training data set are ignored.
+The ignoring of unknown words in new documents worsens the generalisation capabilities of the models.
+The limited data set further supports this claim.
+A larger data set, combined with textual data from different sources, would probably yield better results.
+
+

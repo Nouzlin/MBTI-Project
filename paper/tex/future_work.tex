@@ -1,6 +1,20 @@
 \section{Future Work}
 
-Use Number tagging and User tagging.
-Maybe use URL analysis?
+This section covers some potential improvements that might be worth exploring.
+The results indicate that the models improve with stricter filtering.
+Filtering or tagging numbers and user-mentions could potentially lead to better performance.
+However, some numbers and most user-mentions are already filtered out by the Extreme Filter.
+User-mentions might carry more information if tagged, instead of being removed, as it would indicate how much a user directly communicates with other users via text.
 
-\blindtext
+URLs could also be handled differently to potentially improve the performance.
+Instead of only replacing URLs with tags, it could be interesting to see if the content of the URL could be converted into keywords to further add context about the content shared.
+The URL analysis could be done by manually processing all URLs.
+However, manual processing would be infeasible due to the huge amount of URLs present in the data set.
+An alternative would be to automatically analyse only certain types of URLs.
+For example, the keywords and the title could be extracted from a YouTube URL.
+A Neural Network classifying images could be used to extract keywords from image URLs.
+Twitter, Tumblr and other social media URLs could probably in most cases be directly transformed to the post linked.
+However, adding more terms to the documents might not be the best option, as the results indicate that feature reduction improves the performance of the models. 
+
+It would also be interesting to explore the use of Neural Networks to predict the MBTI.
+Perhaps they would yield better results if appropriately tuned than the models used in this work, as indicated by Ma et al in \cite{maneural}.
