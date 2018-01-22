@@ -16,45 +16,45 @@ Warning--empty journal in maneural
 Warning--empty year in maneural
 
 Done.
-You've used 14 entries,
+You've used 20 entries,
             4087 wiz_defined-function locations,
-            905 strings with 9210 characters,
-and the built_in function-call counts, 7783 in all, are:
-= -- 629
-> -- 131
-< -- 46
-+ -- 72
-- -- 22
-* -- 340
-:= -- 1265
-add.period$ -- 29
-call.type$ -- 14
-change.case$ -- 17
-chr.to.int$ -- 111
-cite$ -- 17
-duplicate$ -- 587
-empty$ -- 689
-format.name$ -- 28
-if$ -- 1784
+            935 strings with 10146 characters,
+and the built_in function-call counts, 10499 in all, are:
+= -- 873
+> -- 158
+< -- 55
++ -- 87
+- -- 27
+* -- 439
+:= -- 1748
+add.period$ -- 41
+call.type$ -- 20
+change.case$ -- 28
+chr.to.int$ -- 129
+cite$ -- 23
+duplicate$ -- 810
+empty$ -- 932
+format.name$ -- 33
+if$ -- 2401
 int.to.chr$ -- 0
-int.to.str$ -- 14
-missing$ -- 107
-newline$ -- 67
-num.names$ -- 14
-pop$ -- 268
+int.to.str$ -- 20
+missing$ -- 154
+newline$ -- 85
+num.names$ -- 19
+pop$ -- 379
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 608
+skip$ -- 831
 stack$ -- 0
-substring$ -- 279
-swap$ -- 416
-text.length$ -- 9
+substring$ -- 337
+swap$ -- 562
+text.length$ -- 12
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 14
+type$ -- 20
 warning$ -- 3
-while$ -- 33
-width$ -- 16
-write$ -- 146
+while$ -- 42
+width$ -- 22
+write$ -- 201
 (There were 3 warnings)

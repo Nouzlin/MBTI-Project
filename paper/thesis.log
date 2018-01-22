@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.13)  22 JAN 2018 00:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.13)  22 JAN 2018 01:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -506,14 +506,13 @@ LaTeX Info: Redefining \nameref on input line 388.
 \@outlinefile=\write3
 \openout3 = `thesis.out'.
 
- (./tex/abstract.tex
+ (./tex/abstract.tex) (./tex/intro.tex)
+(./tex/theory.tex
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 4.
+(Font)              <7> on input line 45.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 4.
-) (./tex/intro.tex)
-(./tex/theory.tex [1{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/
-pdftex.map}
+(Font)              <5> on input line 45.
+ [1{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
@@ -554,77 +553,128 @@ Underfull \hbox (badness 10000) in paragraph at lines 71--77
 
 ) (./tex/results.tex) (./tex/discussion.tex [4]) (./tex/conclusion.tex)
 (./tex/future_work.tex [5]) (./thesis.bbl
+Missing character: There is no â in font ptmr7t!
+Missing character: There is no € in font ptmr7t!
+Missing character: There is no ¦ in font ptmr7t!
+Missing character: There is no â in font ptmr7t!
+Missing character: There is no € in font ptmr7t!
+Missing character: There is no ™ in font ptmr7t!
+
 Underfull \hbox (badness 10000) in paragraph at lines 29--32
+[]\OT1/ptm/m/n/8 A. Grant, ``Good-bye to MBTI, the Fad That Wont Die,''
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--32
+[]$\OT1/ptm/m/n/8 https : / / www . psychologytoday . com / blog / give-[]and-[
+]take / 201309 /
+ []
+
+
+Underfull \hbox (badness 3088) in paragraph at lines 29--32
+\OT1/ptm/m/n/8 goodbye-[]mbti-[]the-[]fad-[]won-[]t-[]die$[], 2013, [On-line; a
+c-cessed 22-Jan-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--37
+\OT1/ptm/m/n/8 Mean-ing-less,'' []$https : / / www . smithsonianmag . com / sma
+rt-[]news /
+ []
+
+
+Overfull \hbox (6.29549pt too wide) in paragraph at lines 34--37
+\OT1/ptm/m/n/8 the-[]myers-[]briggs-[]personality-[]test-[]is-[]pretty-[]much-[
+]meaningless-[]9359770/$[],
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--47
+[]\OT1/ptm/m/n/8 L. Winkie, ``The Myers-Briggs Per-son-al-ity Test Is
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--47
+\OT1/ptm/m/n/8 Bull-shit,'' []$https : / / www . vice . com / en[]nz / article 
+/ bjv8y5 /
+ []
+
+
+Underfull \hbox (badness 4713) in paragraph at lines 44--47
+\OT1/ptm/m/n/8 the-[]myers-[]briggs-[]personality-[]test-[]bullshit$[], 2017, [
+On-line; ac-cessed
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 58--61
 []\OT1/ptm/m/n/8 Myers-Briggs, ``MBTI Ba-sics,'' []$http : / / www . myersbrigg
 s . org /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 29--32
+Underfull \hbox (badness 10000) in paragraph at lines 58--61
 \OT1/ptm/m/n/8 my-[]mbti-[]personality-[]type / mbti-[]basics / home . htm ? bh
 cp = 1$[], 2018,
  []
 
 
-Underfull \hbox (badness 3439) in paragraph at lines 34--37
+Underfull \hbox (badness 3439) in paragraph at lines 63--66
 []\OT1/ptm/m/n/8 ------, ``Ex-traver-sion or In-tro-ver-sion,'' []$http : / / w
 ww . myersbriggs . org /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 34--37
+Underfull \hbox (badness 10000) in paragraph at lines 63--66
 \OT1/ptm/m/n/8 my-[]mbti-[]personality-[]type / mbti-[]basics / extraversion-[]
 or-[]introversion .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 39--42
+Underfull \hbox (badness 10000) in paragraph at lines 68--71
 []\OT1/ptm/m/n/8 ------, ``Sens-ing or In-tu-ition,'' []$http : / / www . myers
 briggs . org /
  []
 
 
-Underfull \hbox (badness 7099) in paragraph at lines 39--42
+Underfull \hbox (badness 7099) in paragraph at lines 68--71
 \OT1/ptm/m/n/8 my-[]mbti-[]personality-[]type / mbti-[]basics / sensing-[]or-[]
 intuition . htm$[], 2018,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 44--47
+Underfull \hbox (badness 10000) in paragraph at lines 73--76
 []\OT1/ptm/m/n/8 ------, ``Think-ing or Feel-ing,'' []$http : / / www . myersbr
 iggs . org /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 44--47
+Underfull \hbox (badness 10000) in paragraph at lines 73--76
 \OT1/ptm/m/n/8 my-[]mbti-[]personality-[]type / mbti-[]basics / thinking-[]or-[
 ]feeling . htm$[], 2018,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 49--52
+Underfull \hbox (badness 10000) in paragraph at lines 78--81
 []\OT1/ptm/m/n/8 ------, ``Judg-ing or Per-ceiv-ing,'' []$http : / / www . myer
 sbriggs . org /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 49--52
+Underfull \hbox (badness 10000) in paragraph at lines 78--81
 \OT1/ptm/m/n/8 my-[]mbti-[]personality-[]type / mbti-[]basics / judging-[]or-[]
 perceiving . htm$[],
  []
 
 ) (./tex/appendix/types-barplot.tex
-<types_barplot.pdf, id=391, pagebox=cropbox, 272.97672pt x 738.32086pt>
+<types_barplot.pdf, id=416, pagebox=cropbox, 272.97672pt x 738.32086pt>
 File: types_barplot.pdf Graphic file (type pdf)
 <use types_barplot.pdf>
 Package pdftex.def Info: types_barplot.pdf  used on input line 9. on input line
  9.
-Package pdftex.def Info: Requested size: 191.08238pt x 516.82108pt on input lin
-e 9.
+Package pdftex.def Info: Requested size: 141.9487pt x 383.92906pt on input line
+ 9.
 ) (./tex/appendix/results.tex [6 <./types_barplot.pdf, page is rotated 270 degr
-ees>] [7
-
-]
+ees>]
 
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 8.
@@ -634,7 +684,7 @@ Overfull \hbox (256.29932pt too wide) in paragraph at lines 12--82
  [][] 
  []
 
-[8
+[7
 
 
 ]
@@ -647,11 +697,11 @@ Overfull \hbox (256.29932pt too wide) in paragraph at lines 89--160
  [][] 
  []
 
-[9
+[8
 
 
 ]) (./tex/appendix/wordclouds.tex
-<wordclouds/wordcloud_all.pdf, id=462, pagebox=cropbox, 409.11203pt x 213.93112
+<wordclouds/wordcloud_all.pdf, id=488, pagebox=cropbox, 409.11203pt x 213.93112
 pt>
 File: wordclouds/wordcloud_all.pdf Graphic file (type pdf)
 <use wordclouds/wordcloud_all.pdf>
@@ -664,7 +714,7 @@ Overfull \hbox (12.8698pt too wide) in paragraph at lines 11--12
 [][] 
  []
 
-<wordclouds/wordcloud_ISTJ.pdf, id=463, pagebox=cropbox, 409.11203pt x 213.9311
+<wordclouds/wordcloud_ISTJ.pdf, id=489, pagebox=cropbox, 409.11203pt x 213.9311
 2pt>
 File: wordclouds/wordcloud_ISTJ.pdf Graphic file (type pdf)
 <use wordclouds/wordcloud_ISTJ.pdf>
@@ -677,7 +727,7 @@ Overfull \hbox (12.8698pt too wide) in paragraph at lines 17--18
 [][] 
  []
 
-<wordclouds/wordcloud_ISFJ.pdf, id=464, pagebox=cropbox, 409.11203pt x 213.9311
+<wordclouds/wordcloud_ISFJ.pdf, id=490, pagebox=cropbox, 409.11203pt x 213.9311
 2pt>
 File: wordclouds/wordcloud_ISFJ.pdf Graphic file (type pdf)
 <use wordclouds/wordcloud_ISFJ.pdf>
@@ -690,7 +740,7 @@ Overfull \hbox (12.8698pt too wide) in paragraph at lines 23--24
 [][] 
  []
 
-<wordclouds/wordcloud_INFJ.pdf, id=465, pagebox=cropbox, 409.11203pt x 213.9311
+<wordclouds/wordcloud_INFJ.pdf, id=491, pagebox=cropbox, 409.11203pt x 213.9311
 2pt>
 File: wordclouds/wordcloud_INFJ.pdf Graphic file (type pdf)
 <use wordclouds/wordcloud_INFJ.pdf>
@@ -703,7 +753,7 @@ Overfull \hbox (12.8698pt too wide) in paragraph at lines 29--30
 [][] 
  []
 
-<wordclouds/wordcloud_INTJ.pdf, id=466, pagebox=cropbox, 409.11203pt x 213.9311
+<wordclouds/wordcloud_INTJ.pdf, id=492, pagebox=cropbox, 409.11203pt x 213.9311
 2pt>
 File: wordclouds/wordcloud_INTJ.pdf Graphic file (type pdf)
 <use wordclouds/wordcloud_INTJ.pdf>
@@ -716,7 +766,7 @@ Overfull \hbox (12.8698pt too wide) in paragraph at lines 35--36
 [][] 
  []
 
-<wordclouds/wordcloud_ISTP.pdf, id=467, pagebox=cropbox, 409.11203pt x 213.9311
+<wordclouds/wordcloud_ISTP.pdf, id=493, pagebox=cropbox, 409.11203pt x 213.9311
 2pt>
 File: wordclouds/wordcloud_ISTP.pdf Graphic file (type pdf)
 <use wordclouds/wordcloud_ISTP.pdf>
@@ -729,7 +779,7 @@ Overfull \hbox (12.8698pt too wide) in paragraph at lines 41--42
 [][] 
  []
 
-<wordclouds/wordcloud_ISFP.pdf, id=468, pagebox=cropbox, 409.11203pt x 213.9311
+<wordclouds/wordcloud_ISFP.pdf, id=494, pagebox=cropbox, 409.11203pt x 213.9311
 2pt>
 File: wordclouds/wordcloud_ISFP.pdf Graphic file (type pdf)
 <use wordclouds/wordcloud_ISFP.pdf>
@@ -742,7 +792,7 @@ Overfull \hbox (12.8698pt too wide) in paragraph at lines 47--48
 [][] 
  []
 
-<wordclouds/wordcloud_INFP.pdf, id=469, pagebox=cropbox, 409.11203pt x 213.9311
+<wordclouds/wordcloud_INFP.pdf, id=495, pagebox=cropbox, 409.11203pt x 213.9311
 2pt>
 File: wordclouds/wordcloud_INFP.pdf Graphic file (type pdf)
 <use wordclouds/wordcloud_INFP.pdf>
@@ -755,7 +805,7 @@ Overfull \hbox (12.8698pt too wide) in paragraph at lines 53--54
 [][] 
  []
 
-<wordclouds/wordcloud_INTP.pdf, id=470, pagebox=cropbox, 409.11203pt x 213.9311
+<wordclouds/wordcloud_INTP.pdf, id=496, pagebox=cropbox, 409.11203pt x 213.9311
 2pt>
 File: wordclouds/wordcloud_INTP.pdf Graphic file (type pdf)
 <use wordclouds/wordcloud_INTP.pdf>
@@ -768,7 +818,7 @@ Overfull \hbox (12.8698pt too wide) in paragraph at lines 59--60
 [][] 
  []
 
-<wordclouds/wordcloud_ESTP.pdf, id=471, pagebox=cropbox, 409.11203pt x 213.9311
+<wordclouds/wordcloud_ESTP.pdf, id=497, pagebox=cropbox, 409.11203pt x 213.9311
 2pt>
 File: wordclouds/wordcloud_ESTP.pdf Graphic file (type pdf)
 <use wordclouds/wordcloud_ESTP.pdf>
@@ -781,7 +831,7 @@ Overfull \hbox (12.8698pt too wide) in paragraph at lines 65--66
 [][] 
  []
 
-<wordclouds/wordcloud_ESFP.pdf, id=472, pagebox=cropbox, 409.11203pt x 213.9311
+<wordclouds/wordcloud_ESFP.pdf, id=498, pagebox=cropbox, 409.11203pt x 213.9311
 2pt>
 File: wordclouds/wordcloud_ESFP.pdf Graphic file (type pdf)
 <use wordclouds/wordcloud_ESFP.pdf>
@@ -794,7 +844,7 @@ Overfull \hbox (12.8698pt too wide) in paragraph at lines 71--72
 [][] 
  []
 
-<wordclouds/wordcloud_ENFP.pdf, id=473, pagebox=cropbox, 409.11203pt x 213.9311
+<wordclouds/wordcloud_ENFP.pdf, id=499, pagebox=cropbox, 409.11203pt x 213.9311
 2pt>
 File: wordclouds/wordcloud_ENFP.pdf Graphic file (type pdf)
 <use wordclouds/wordcloud_ENFP.pdf>
@@ -807,7 +857,7 @@ Overfull \hbox (12.8698pt too wide) in paragraph at lines 77--78
 [][] 
  []
 
-<wordclouds/wordcloud_ENTP.pdf, id=474, pagebox=cropbox, 409.11203pt x 213.9311
+<wordclouds/wordcloud_ENTP.pdf, id=500, pagebox=cropbox, 409.11203pt x 213.9311
 2pt>
 File: wordclouds/wordcloud_ENTP.pdf Graphic file (type pdf)
 <use wordclouds/wordcloud_ENTP.pdf>
@@ -820,7 +870,7 @@ Overfull \hbox (12.8698pt too wide) in paragraph at lines 83--84
 [][] 
  []
 
-<wordclouds/wordcloud_ESTJ.pdf, id=475, pagebox=cropbox, 409.11203pt x 213.9311
+<wordclouds/wordcloud_ESTJ.pdf, id=501, pagebox=cropbox, 409.11203pt x 213.9311
 2pt>
 File: wordclouds/wordcloud_ESTJ.pdf Graphic file (type pdf)
 <use wordclouds/wordcloud_ESTJ.pdf>
@@ -833,7 +883,7 @@ Overfull \hbox (12.8698pt too wide) in paragraph at lines 89--90
 [][] 
  []
 
-<wordclouds/wordcloud_ESFJ.pdf, id=476, pagebox=cropbox, 409.11203pt x 213.9311
+<wordclouds/wordcloud_ESFJ.pdf, id=502, pagebox=cropbox, 409.11203pt x 213.9311
 2pt>
 File: wordclouds/wordcloud_ESFJ.pdf Graphic file (type pdf)
 <use wordclouds/wordcloud_ESFJ.pdf>
@@ -846,7 +896,7 @@ Overfull \hbox (12.8698pt too wide) in paragraph at lines 95--96
 [][] 
  []
 
-<wordclouds/wordcloud_ENFJ.pdf, id=477, pagebox=cropbox, 409.11203pt x 213.9311
+<wordclouds/wordcloud_ENFJ.pdf, id=503, pagebox=cropbox, 409.11203pt x 213.9311
 2pt>
 File: wordclouds/wordcloud_ENFJ.pdf Graphic file (type pdf)
 <use wordclouds/wordcloud_ENFJ.pdf>
@@ -859,7 +909,7 @@ Overfull \hbox (12.8698pt too wide) in paragraph at lines 101--102
 [][] 
  []
 
-<wordclouds/wordcloud_ENTJ.pdf, id=478, pagebox=cropbox, 409.11203pt x 213.9311
+<wordclouds/wordcloud_ENTJ.pdf, id=504, pagebox=cropbox, 409.11203pt x 213.9311
 2pt>
 File: wordclouds/wordcloud_ENTJ.pdf Graphic file (type pdf)
 <use wordclouds/wordcloud_ENTJ.pdf>
@@ -872,7 +922,7 @@ Overfull \hbox (12.8698pt too wide) in paragraph at lines 107--108
 [][] 
  []
 
-) [10
+) [9
 
 
  <./wordclouds/wordcloud_all.pdf> <./wordclouds/wordcloud_ISTJ.pdf
@@ -891,7 +941,7 @@ pdfTeX warning: pdflatex (file ./wordclouds/wordcloud_INFJ.pdf): PDF inclusion:
 
 pdfTeX warning: pdflatex (file ./wordclouds/wordcloud_INTJ.pdf): PDF inclusion:
  multiple pdfs with page group included in a single page
->] [11 <./wordclouds/wordcloud_ISTP.pdf> <./wordclouds/wordcloud_ISFP.pdf
+>] [10 <./wordclouds/wordcloud_ISTP.pdf> <./wordclouds/wordcloud_ISFP.pdf
 
 pdfTeX warning: pdflatex (file ./wordclouds/wordcloud_ISFP.pdf): PDF inclusion:
  multiple pdfs with page group included in a single page
@@ -911,7 +961,7 @@ pdfTeX warning: pdflatex (file ./wordclouds/wordcloud_ESTP.pdf): PDF inclusion:
 
 pdfTeX warning: pdflatex (file ./wordclouds/wordcloud_ESFP.pdf): PDF inclusion:
  multiple pdfs with page group included in a single page
->] [12 <./wordclouds/wordcloud_ENFP.pdf> <./wordclouds/wordcloud_ENTP.pdf
+>] [11 <./wordclouds/wordcloud_ENFP.pdf> <./wordclouds/wordcloud_ENTP.pdf
 
 pdfTeX warning: pdflatex (file ./wordclouds/wordcloud_ENTP.pdf): PDF inclusion:
  multiple pdfs with page group included in a single page
@@ -942,10 +992,10 @@ Package rerunfilecheck Info: File `thesis.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 698.
  ) 
 Here is how much of TeX's memory you used:
- 8294 strings out of 492985
- 126247 string characters out of 6132585
- 269745 words of memory out of 5000000
- 11559 multiletter control sequences out of 15000+600000
+ 8312 strings out of 492985
+ 126508 string characters out of 6132585
+ 271171 words of memory out of 5000000
+ 11572 multiletter control sequences out of 15000+600000
  41975 words of font info for 77 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
  41i,10n,35p,368b,412s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -963,10 +1013,10 @@ xmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2017/texmf-dist
 e1/urw/times/utmbi8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/ti
 mes/utmr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/utmri8
 a.pfb>
-Output written on thesis.pdf (12 pages, 2373040 bytes).
+Output written on thesis.pdf (11 pages, 2377431 bytes).
 PDF statistics:
- 637 PDF objects out of 1000 (max. 8388607)
- 542 compressed objects within 6 object streams
- 131 named destinations out of 1000 (max. 500000)
+ 664 PDF objects out of 1000 (max. 8388607)
+ 570 compressed objects within 6 object streams
+ 136 named destinations out of 1000 (max. 500000)
  563 words of extra memory for PDF output out of 10000 (max. 10000000)
 
