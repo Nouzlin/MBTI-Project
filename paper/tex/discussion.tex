@@ -8,9 +8,9 @@ The data set used in this work contains numerous limitations, which are covered 
 
 \subsubsection{Self-Referencing Data}
 The MBTI of a user is frequently self-referenced in the posts by that user. 
-The self-referencing means that the unfiltered models learn that it is best to predict the most frequent MBTI in the document.
+The self-referencing means that the unfiltered models learn that it is best to predict the most frequent MBTI in a document.
 The Extra Trees model achieves an accuracy of 64.9\% with the unfiltered data set.
-The accuracy could potentially be higher if one would create a simple if-else case and predict the MBTI that is the most frequent in the document.
+The accuracy could potentially be higher if one would create a simple if-else case and predict the MBTI that is the most frequent in a document.
 However, self-referencing is not a realistic model to use.
 It is a symptom of the origin of the data set; the forum the data originates from is used to discuss Myers-Briggs types.
 
@@ -23,7 +23,7 @@ Thus, the results obtained and presented in Table \ref{tab:filter-results} and i
 
 The validity of MBTI, based on the writing of a user, can not be confirmed by this work.
 A weak connection is suggested by the models trained, but further work is needed, reasonably on a different data set.
-The best classifier trained is slightly worse than the 37\% accuracy achieved by Ma et al. in \cite{maneural}.
+The best classifier obtained is slightly worse than the 37\% accuracy achieved by Ma et al. in \cite{maneural}.
 
 \subsubsection{Limited Post Length}
 The EDA analysis performed indicates that some posts by users are cut-off.
@@ -35,9 +35,10 @@ Only URLs were tagged in this work.
 It would perhaps have yielded better results if also numbers and user-mentions (prefixed by "@") would have been tagged or removed.
 
 \subsubsection{Filter Levels and Feature Types}
-The results improved with the number of topics used for the type-filtered models.
-The improvement could be explained by a larger corpus used when creating the LDA models.
+The results generally improved with the number of topics used for the type-filtered models.
+The explanation behind this could be that the increased number of topics better represented the created corpus.
 When extreme terms are filtered the number of topics needed seem to decrease.
+The size of the corpus drastically decrease when extreme terms are filtered out, which reduces the need for many topics.
 
 The differences between the two feature types are minimal.
 The results indicate that the topic distribution (TD) features perform as well as the topic terms (TT) features.
@@ -48,8 +49,6 @@ The results could have potentially differed if a larger or smaller number of top
 
 \subsubsection{Corpus}
 The corpus is created from the training data, which means that terms not present in the training data set are ignored.
-The ignoring of unknown words in new documents worsens the generalisation capabilities of the models.
-The limited data set further supports this claim.
-A larger data set, combined with textual data from different sources, would probably yield better results.
+The ignoring of unknown words in new documents potentially harm the generalisation and the robustness of the models.
 
 

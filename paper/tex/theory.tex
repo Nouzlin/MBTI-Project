@@ -8,35 +8,33 @@ The idea behind MBTI was to make the concepts observed by Jung more accessible t
 Table \ref{tab:mbti-types} contains the 16 personality types defined by Myers-Briggs \cite{mbti}.
 
 \subsubsection{Introversion and Extroversion}
-Introversion (I) and extroversion (E) is used to describe what an individual focuses on and draws their energy from.
+The introversion (I) and extroversion (E) pair is used to describe what an individual focuses on and draws their energy from.
 Introversion means that the individual focuses on his/her own "world", which means that they draw energy from ideas and memories and from self-reflection \cite{mbti-IE}.
 Extroversion is the opposite side; energy is drawn from activities and events with others \cite{mbti-IE}.
 Problems for people with the extroversion type are typically solved by talking and discussing with others out loud \cite{mbti-IE}.
 
 \subsubsection{Intuition and Sensing}
-Intuition (N) and sensing (S) describes how individuals handles information.
+The intuition (N) and sensing (S) pair describes how individuals handle information.
 Intuition means that individuals pay more attention to patterns, impressions, theoretical concepts and abstract theories \cite{mbti-NS}.
 Sensing is, on the other hand, connected to the five senses.
-Information is gathered from the physical connection to the world, e.g., what you hear, smell and touch \cite{mbti-NS}.
+Information is gathered from the physical connection to the world, e.g., what an individual hear, smell and touch \cite{mbti-NS}.
 
 \subsubsection{Thinking and Feeling}
-Thinking (T) and feeling (F) covers how individuals perform decision making.
+The thinking (T) and feeling (F) pair covers how individuals perform decision making.
 Individuals with the thinking type typically analyse ground truths and use logical reasoning to make a decision; pros and cons are analysed \cite{mbti-TF}.
 The feeling type describes people who take the opinion of others into consideration \cite{mbti-TF}.
 They weigh the outcome of the situation and try to maintain harmony, by caring about the point-of-view of others \cite{mbti-TF}.
 
 \subsubsection{Judging and Perceiving}
-Judging (J) and perceiving (P) is the final pair of the MBTI.
-This pair is related to how others typically see you.
+Judging (J) and perceiving (P) pair is the final pair of the MBTI.
+The pair is related to how others typically see the individual.
 People with the judging trait usually live more structured lives than those with the perceiving trait \cite{mbti-JP}.
-The major difference between this pair and the pairs covered before is that this trait is based on the side individuals let others see \cite{mbti-JP}.
+The major difference between this pair and the pairs covered before, is that this trait is based on the side(s) the individual let others see \cite{mbti-JP}.
 For example, an individual can be structured and live ordered lives when alone, but in the interaction with others they tend to be interpreted as spontaneous and open-ended \cite{mbti-JP}.
 
 \begin{table}[!t]
     %% increase table row spacing, adjust to taste
     \renewcommand{\arraystretch}{3}
-    % if using array.sty, it might be a good idea to tweak the value of
-    % \extrarowheight as needed to properly center the text within the cells
     \caption{Myers-Briggs Type Indicator Table}
     \label{tab:mbti-types}
     \centering
@@ -66,8 +64,8 @@ It can also be used to calculate the topic distribution for a document.
 The LDA model, described by Blei et al. in \cite{Blei2003}, is a probabilistic generative model built on the notion of underlying topics.
 A document can belong to several topics simultaneously (with a probability $p(\alpha_i)$ of belonging to topic $\alpha_i$).
 All the terms in a collection can belong to their own topic(s).
-Each term in a document in a corpus is assumed to be generated from a topic (following a multinomial distribution with a latent parameter drawn from a Dirichlet distribution).
-The LDA model can thus for a given document calculate the probability of that document belonging to some topic $\alpha_i$.
+Each term in a document is assumed to be generated from a topic (following a multinomial distribution with a latent parameter drawn from a Dirichlet distribution).
+The LDA model can thus, for a given document, calculate the probability of that document belonging to some topic $\alpha_i$.
 
 \subsection{Features} \label{sec:theory-features}
 
@@ -76,16 +74,16 @@ Normalisation transforms the data values above $0$ in the feature vector to be i
 
 \subsubsection{Bag-Of-Words} \label{sec:theory-bow}
 The bag-of-words model is a simple representation of a document.
-The model ignores the order of words and the words occurring before the $i$-th word ($w_i$):
+The model ignores the order of words and the words occurring before the $i$-th word ($w_i$), see Equation \ref{eq:bow}.
 
-\begin{equation*}
+\begin{equation} \label{eq:bow}
     p(w_i|w_1, \ldots, w_{i-1}) = p(w_i)
-\end{equation*}
+\end{equation}
 
 The feature vector consists of occurrence counts of words in a dictionary, where each word is represented by an index in the vector.
-The dictionary can either be predefined or created from the training set.
+The dictionary can be either predefined or created from the training set.
 One limitation of the bag-of-words model is how to handle words not present in the training corpus.
-Unknown words can either be discarded or replaced with an \emph{UNK} tag.
+Unknown words can be either discarded or replaced with an \texttt{<UNK>} tag.
 The count vector can then be normalised, smoothed or used as-is.
 
 \subsubsection{TF-IDF}
@@ -99,23 +97,23 @@ where $N$ is the number of documents and $n_i$ is the number of documents where 
 
 \subsubsection{Bigram Model} \label{sec:theory-bigram}
 The bigram model is similar to the bag-of-words model in Section \ref{sec:theory-bow}.
-Instead of using counts of single words the bigram model uses pairs of adjacent words as features:
+Instead of using counts of single words, the bigram model uses pairs of adjacent words as features, see Equation \ref{eq:bigram}.
 
-\begin{equation*}
+\begin{equation} \label{eq:bigram}
     p(w_i|w_1, \ldots, w_{i-1}) = p(w_i|w_{i-1})
-\end{equation*}
+\end{equation}
 
 The appearance order for different pairs is ignored after construction; it is only the counts of pairs that are interesting.
 
 \subsubsection{Bag-Of-Letters} \label{sec:theory-letters}
-The bag-of-letters feature vector is a simplified variant of the Bag-of-words model.
-The features are constructed from a predefined alphabet consisting of letters and characters.
+The bag-of-letters feature vector is a simplified variant of the bag-of-words model.
+The features are constructed from a predefined alphabet, consisting of letters and characters.
 Similar to the bag-of-words model, the symbols in the alphabet are counted for each document.
 The feature vector can then be normalised or used as-is.
 
 \subsubsection{Topic Distribution (TD)}
 The LDA model can calculate the probability distribution $$T_{d_i}=[p(\alpha_1),\ldots,p(\alpha_t)]$$ over all $t$ topics ($\alpha_1,\ldots,\alpha_t$) for a given document $d_i$.
-$p(\alpha_i)$ is the probability that document $d_i$ belongs to topic $\alpha_i$.
+$p(\alpha_i)$ is the probability that the document $d_i$ belongs to the topic $\alpha_i$.
 The distribution can thus be used to determine which topic(s) the document was generated from.
 This probability distribution can be directly used as a feature vector for various models.
 
@@ -124,7 +122,7 @@ In \cite{Chen2016}, Chen et al. try to use LDA to improve the performance of Sup
 In their work they combine the topic distribution of a document from a LDA model together with the top terms for the topics.
 The same approach is tested in this work.
 The topic terms feature vectors are constructed by first calculating the topic distribution $T_{d_i}$ for each document $d_i$.
-Then, for each topic $\alpha_i$, the $n$ top topic terms ($\beta_{i, 1}, \ldots, \beta_{i, n}$) are used to construct the feature vector.
+Then, for each topic $\alpha_i$, the $n$ top terms ($\beta_{i, 1}, \ldots, \beta_{i, n}$) are used to construct the feature vector.
 The topic distribution and the topic terms can be retrieved from a LDA model with $t$ topics.
 The feature vector $f_{d_i}$ for a document $d_i$  is thus defined by 
 \begin{equation*}
@@ -134,8 +132,8 @@ where $\beta_i$ is short-hand notation for the values $\beta_{i, 1}, \ldots, \be
 The dimension of a topic terms feature vector for one document is $t*n$ feature values.
 Each value in the feature vector is initialised to zero.
 
-The topic distribution determines how many top topic terms shall be counted from each topic in the LDA model.
-If topic $\alpha_i$  has probability $p_i$, then the number of top topic terms to be used ($n_i$) from topic $\alpha_i$ is given by Equation \ref{eq:n-top-topic-terms}.
+The topic distribution determines how many top terms shall be counted from each topic in the LDA model.
+If topic $\alpha_i$  has probability $p_i$, then the number of top terms to be used ($n_i$) from topic $\alpha_i$ is given by Equation \ref{eq:n-top-topic-terms}.
 
 \begin{equation} \label{eq:n-top-topic-terms}
     n_i=Round(p_i*n)
@@ -153,7 +151,7 @@ The feature value for each of the $n_i$ top terms is set according to Equation \
               \right.
 \end{equation}
 
-If the term is present in document $d_i$ it is counted and the feature value is set to $1+TF$.
+If the term is present in document $d_i$, it is counted and the feature value is set to $1+TF$.
 $TF$  is the number of times the term occurs in document $d_i$.  
 If the term is not in the document, the feature value for the term is set to $1$.
 If a document $d_i$  is calculated by the LDA to belong to a topic $\alpha_i$, then Equation \ref{eq:feature-value} would give more weight to the top terms that do occur in $d_i$, compared to the missing ones.
@@ -172,11 +170,11 @@ and $n=10$ top topic terms would result in a feature vector $f_{d_i}$ where:
 
 \subsection{Models} \label{sec:theory-models}
 
-Various supervised models can be used for classification.
+Various supervised learning models can be used for classification.
 This section will very briefly cover the models used in this work.
 
 \subsubsection{Linear Support Vector Classification}
-The linear Support Vector Classifier (LinSVC) can efficiently handle sparse features\footnote{http://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html}.
+The Linear Support Vector Classifier (LinSVC) can efficiently handle sparse features\footnote{http://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html}.
 The SVC has a slightly different mathematical formulation than the traditional Support Vector Machine (SVM), but the idea behind the model is the same as in the SVM case.
 A hyperplane is constructed in order to try and separate the different classes with as big of a margin as possible.
 The margin is defined as the distance from the hyperplane to the nearest point.
@@ -195,7 +193,7 @@ It can be heavily tuned to the problem at hand with various parameters \cite{Geu
 \subsubsection{AdaBoost Classifier}
 The AdaBoost (AB) classifier is an ensemble method which combines multiple weak learners (estimators) \cite{Freund1995}.
 The later weak learners in the chain are tweaked in order to solve those samples that were misclassified by the previous learners \cite{Freund1995}.
-The result of each weak learner is combined into a weighted sum \cite{Freund1995}.
+The result of each weak learner is combined into a weighted sum used to classify the sample \cite{Freund1995}.
 
 \subsubsection{Gradient Boosting Classifier}
 The Gradient Boosting (GB) classifier is a variant of the AdaBoost classifier.
@@ -210,7 +208,7 @@ It could, for example, be used to perform variance analysis, detect outliers or 
 
 \subsubsection{Word clouds}
 In the field of NLP, the use of word clouds can help visualise important aspects of the data.
-Word clouds are generated by simply counting the occurrence of each word in the data set and presenting the most common words in an image.
+Word clouds are generated by simply counting the occurrences of each word in the data set and presenting the most common words in an image.
 The most frequent words are typically presented with a larger font.
 
 \subsection{Evaluation Metrics} \label{sec:evaluation-metrics}

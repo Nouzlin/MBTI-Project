@@ -1,13 +1,14 @@
 \section{Method} \label{sec:method}
 
-This section covers the data set used in this work and the preprocessing and feature extraction used.
-The implementations of the classification models used are briefly mentioned.
+This section covers the data set, the preprocessing and feature extraction used.
+The implementations of the classification models used also are briefly described.
 The work was implemented using Python\footnote{https://www.python.org/} version 3.6.2.
 \subsection{Data Set}
 The data set used in this work was downloaded from Kaggle\footnote{https://www.kaggle.com/}.
 It contains data from 8675 Personality Cafe \footnote{http://personalitycafe.com/forum/} forum users.
 Each data entry contains the 50 latest posts from a user, together with the MBTI of the user.
 30\% of the data was used as a test set and the training set consisted of the remaining 70\%.
+
 \subsection{Exploratory Data Analysis}
 A simple EDA was performed to better understand the data.
 This work mainly used word clouds, bar plots and document content analysis.
@@ -16,7 +17,7 @@ This work mainly used word clouds, bar plots and document content analysis.
 The Python library \texttt{word\_cloud}\footnote{https://github.com/amueller/word\_cloud} was used to generate word clouds.
 First a word cloud was generated from all the documents in the data set.
 The idea behind this general word cloud was to see if there were any terms or topics that needed further investigation.
-After the general word cloud was generated the documents were partitioned on their respective MBTI labels.
+After the general word cloud was generated the documents were partitioned with respect to their respective MBTI labels.
 A word cloud was then generated for each MBTI label.
 Appendix \ref{sec:wordclouds} contains all the word clouds generated.
 
@@ -50,7 +51,7 @@ This filter level only applies the first two steps in the preprocessing mentione
 
 \paragraph{Type Filter} \label{sec:method-type-filter}
 This filter level applies the standard preprocessing, but it also removes any MBTIs found in the data set.
-The filtering is done by adding the MBTIs to the stop-word list.
+The filtering is done by adding the MBTIs to the stop word list.
 
 \paragraph{Extreme Filter} \label{sec:method-extreme-filter}
 This filter level applies both the standard preprocessing and the removal of MBTIs, as in the case of the Type Filter.
@@ -70,13 +71,13 @@ The feature vector was normalised for the LinSVC, GB and ET classifiers.
 \subsection{Model Implementation and Training}
 The models used the implementations in the \texttt{scikit-learn}\footnote{http://scikit-learn.org/stable/} package for Python.
 The main parameters for each model was tuned using the \texttt{GridSearchCV} class, which allows a grid of parameter values to be tested for each model using cross-validation. 
-The cross-validation used in this work was \texttt{StratifiedKFold} using five folds.
-The stratified $k$-folds tries to maintain the imbalance of the data set in the different folds. 
+The cross-validation used in this work was \texttt{StratifiedKFold}, using five folds.
+The stratified $k$-folds tries to maintain the imbalance of the data set labels in every folds created. 
 The \texttt{F1\_micro} score was used to choose the best cross-validated model during the \texttt{GridSearchCV} parameter tuning.
 The micro score globally counts all TPs, TNs, FPs and FNs, which is more suitable if the data set is imbalanced. 
 
 \subsubsection{Initial Models} \label{sec:method-initial-models}
-The first part was to use only the standardised and tagged data set (see Section \ref{sec:method-normal-filter}) in a LR model.
+The first part was to use only the standardised and tagged data set (see Section \ref{sec:method-normal-filter}) with a LR model.
 The classifier was tested using the bag-of-words model, the bigram model and the TF-IDF model.
 The best LR model obtained through the \texttt{GridSearchCV} process was then evaluated on the test set.
 
@@ -92,5 +93,5 @@ The parameters for each model was individually optimised using \texttt{GridSearc
 
 \subsubsection{Extreme Filter Models}  \label{sec:method-extreme-filter-models}
 The final part was to also filter out extreme words from the data set, see Section \ref{sec:method-extreme-filter}.
-The same models are used as in Section \ref{sec:method-type-filter-models}.
+The same models were used as in Section \ref{sec:method-type-filter-models}.
 The parameters were again optimised using \texttt{GridSearchCV}.
